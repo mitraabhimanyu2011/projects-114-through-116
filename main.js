@@ -1,6 +1,9 @@
+noseX = 0;
+noseY = 0;
+
 function preload()
 {
-
+    moustache = loadImage("https://i.postimg.cc/3x3QzSGq/m.png");
 }
 
 function setup()
@@ -17,7 +20,8 @@ function setup()
 
 function draw()
 {
-
+    image(video, 0, 0, 300, 300);
+    image(moustache, noseX - 37.5, noseY - 10, 75, 50);
 }
 
 function make_moustache()
@@ -35,7 +39,9 @@ function gotPoses(results)
     if(results.length > 0)
     {
         console.log(results);
-        console.log("nose x = " + results[0].pose.nose.x);
-        console.log("nose y = " + results[0].pose.nose.y);        
+        noseX = results[0].pose.nose.x;
+        noseY = results[0].pose.nose.y;
+        console.log("The X coordinate of the nose is: " + noseX);
+        console.log("The Y coordinate of the nose is: " + noseY);       
     }
 }
